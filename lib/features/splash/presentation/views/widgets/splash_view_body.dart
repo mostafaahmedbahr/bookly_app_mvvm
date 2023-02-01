@@ -1,6 +1,8 @@
 import 'package:bookly_app/core/utils/assets_path.dart';
+import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
-class SplashViewBody extends StatefulWidget {
+import 'package:get/get.dart';
+ class SplashViewBody extends StatefulWidget {
   const SplashViewBody({Key? key}) : super(key: key);
 
   @override
@@ -15,9 +17,21 @@ class _SplashViewBodyState extends State<SplashViewBody> with TickerProviderStat
   @override
   void initState() {
     super.initState();
+    animation();
+    navigateToAfterSplash();
+
+  }
+
+  void navigateToAfterSplash(){
+    Future.delayed(const Duration(seconds: 3),(){
+      Get.to(()=>const HomeView(),transition:Transition.fadeIn ,duration: const Duration(milliseconds: 250) );
+    });
+  }
+
+  void animation(){
     animationController = AnimationController(
-        vsync: this,
-        duration: const Duration(seconds: 2,),
+      vsync: this,
+      duration: const Duration(seconds: 2,),
     );
     slidingAnimation = Tween<Offset>(begin:const Offset(0 , 40) ,end: Offset.zero).animate(animationController);
     animationController.forward();
