@@ -23,6 +23,7 @@ class HomeViewBody extends StatelessWidget {
             style: AppStyles.titleMedium,
           ),
         ),
+
       ],
     );
   }
